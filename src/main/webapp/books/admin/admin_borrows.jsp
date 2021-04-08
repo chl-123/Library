@@ -82,39 +82,7 @@
 <div style="width: 100%;float: left;height: 310px;"></div>
 <div class="body">
     <div class="content">
-        <div class="left">
-            <div class="gongGao">
-                <div class="title">公 告</div>
-                <div class="context">你是管理员，请<a style="display:inline-block;"
-                                               href="${pageContext.request.contextPath}/books/admin/admin_notice.jsp">发布公告</a>
-                </div>
-            </div>
-            <div class="gongGao">
-                <div class="title">友 情 链 接</div>
-                <div class="context">
-                    <a href="https://blog.csdn.net/qq_40625778">》CSDN，技术分享</a>
-                    <a href="https://www.cnblogs.com/cafuc20160512056/">》博客园，技术分享</a>
-                    <a href="https://www.jianshu.com/u/33531987c9a7">》简书，技术分享</a>
-                    <a href="https://y0ahx3.coding-pages.com/">》个人博客</a>
-                </div>
-            </div>
-            <div class="gongGao" style="height:400px;">
-                <div class="title">源 码 下 载</div>
-                <div class="context">
-                    <div style="font-size:14px; width: 100%;  height: 400px;margin-bottom: 20px;">
-                        <div style="padding: 5px;  color: black">
-                            <label style="font-size:15px;font-weight: normal;">下载源码请到公众号：C you again</label><br/>
-                            <label style="font-size:15px;font-weight: normal;">1、求职者：面试题、面试经验、面试技巧</label><br/>
-                            <label style="font-size:15px;font-weight: normal;">2、职场人：技术分享、程序人生</label><br/>
-                            <label style="font-size:15px;font-weight: normal;">3、学生党：Java从入门到精通PDF版教程、数据结构与算法、各类系统实战教程</label><br/>
-                            <label style="font-size:15px;font-weight: normal;">4、其它：PPT模板、简历模板、计算机使用技术及技巧</label>
-                        </div>
-                        <img width="160px" style="position: relative;left: 50%;margin-left: -80px;"
-                             src="${pageContext.request.contextPath}/books/img/ghz.jpg"/>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%@include file="../bulletin_board/gongGao.jsp" %>
         <div class="right">
 
             <div class="container">

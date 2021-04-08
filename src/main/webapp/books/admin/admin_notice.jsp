@@ -84,8 +84,8 @@
 <div style="width: 100%;float: left;height: 310px;"></div>
 <div class="body">
     <div class="content">
-        <%@include file="../bulletin_board/gongGao.jsp" %>
-        <div class="right">
+        <%@include file="../bulletin_board/admin_gongGao.jsp" %>
+        <div class="left">
             <div class="container">
                 <!-- left, vertical navbar & content -->
                 <div class="row">

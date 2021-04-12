@@ -83,7 +83,9 @@
 <div class="body">
     <div class="content">
         <%@include file="../bulletin_board/admin_gongGao.jsp" %>
-        <div class="left">
+        <div class="left
+
+">
             <div class="container">
                 <!-- left, vertical navbar & content -->
                 <div class="row">

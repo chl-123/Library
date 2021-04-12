@@ -14,15 +14,47 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/books/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/books/css/bootstrap-theme.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/books/css/bootstrap-admin-theme.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/books/css/pagination.css">
     <script src="${pageContext.request.contextPath}/books/js/jquery-3.1.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/books/js/jquery.pagination.js"></script>
     <script src="${pageContext.request.contextPath}/books/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/books/js/bootstrap-dropdown.min.js"></script>
     <script src="${pageContext.request.contextPath}/books/js/reader.js"></script>
-
     <script src="${pageContext.request.contextPath}/books/js/readerUpdateInfo.js"></script>
     <script src="${pageContext.request.contextPath}/books/js/readerUpdatePwd.js"></script>
     <script src="${pageContext.request.contextPath}/books/js/index.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/books/css/index.css"/>
+    <script type="text/javascript">
+        $(function () {
+            initPagination();
+        });
+
+        //生成页面导航条
+        function initPagination() {
+            //获取总记录数
+            var totalRecord = 16;
+            //声明一个JSON对象存储Pagination要设置的属性
+            var properties = {
+                num_edge_entries: 1, //边缘页数
+                num_display_entries: 3, //主体页数
+                callback: pageselectCallback,
+                items_per_page:<%--${requestScope.pageInfo.pageSize}--%>5,//每页显示页数
+                current_page:<%--${requestScope.pageInfo.pageNum - 1}--%>1,//当前页
+                prev_text: "上一页",
+                next_text: "下一页"
+            };
+            //生成页码导航条
+            $("#Pagination").pagination(totalRecord, properties)
+        }
+
+        //用户点击“1,2.3”这样的页码时调用这个函数实现页面跳转
+        function pageselectCallback(pageIndex, JQuery) {
+            var pageNum = pageIndex + 1;
+            window.location.href = "/manage_books/books/admin/admin_books.jsp";
+            //由于每一个页码按钮都是超链接，所以在这个函数最后取消超链接的默认行为
+            return false;
+        }
+    </script>
 </head>
 
 <body>
@@ -84,15 +116,11 @@
     <div class="content">
         <%@include file="../bulletin_board/admin_gongGao.jsp" %>
         <div class="left">
-
             <div class="container">
                 <!-- left, vertical navbar & content -->
                 <div class="row">
-
                     <!-- content -->
                     <div class="col-md-10">
-
-
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel panel-default bootstrap-admin-no-table-panel">
@@ -130,8 +158,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="row">
                             <div class="col-lg-12">
                                 <table id="data_list" class="table table-hover table-bordered" cellspacing="0"
@@ -188,9 +214,18 @@
                                     </td>
                                     </tbody>
                                     <%} %>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="6" align="center">
+                                            <div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
+                                        </td>
+                                    </tr>
+
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <script type="text/javascript">
@@ -212,7 +247,6 @@
                     }
                 </script>
             </div>
-
         </div>
     </div>
 

@@ -3,6 +3,8 @@ package com.cya.controller;
 
 import com.cya.dao.BookDao;
 import com.cya.pojo.Book;
+import com.cya.service.Service;
+import com.cya.service.impl.ServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 @WebServlet("/selectServlet")
 public class selectServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+    private Service service=new ServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */

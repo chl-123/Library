@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 /**
@@ -343,5 +344,57 @@ public class BookDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public Integer queryForPageTotalCount() {
+        Connection conn = DBUtil.getConnectDb();
+        String sql = "select count(*) from book";
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        Integer anInt=0;
+        try {
+            stm = conn.prepareStatement(sql);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                anInt = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            DBUtil.CloseDB(rs, stm, conn);
+        }
+        return anInt;
+    }
+
+    public List<Book> queryForPageItems(int begin, int pageSize) {
+        ArrayList<Book> tag_Array = new ArrayList<Book>();
+        Connection conn = DBUtil.getConnectDb();
+        /*?='" + begin + "' ,? ='" + pageSize + "'"
+        * */
+        String sql = "select * from book limit " + begin + "," + pageSize + "" ;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement(sql);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                Book tag = new Book();
+                tag.setBid(rs.getInt("bid"));
+                tag.setName(rs.getString("name"));
+                tag.setCard(rs.getString("card"));
+                tag.setType(rs.getString("type"));
+                tag.setAutho(rs.getString("autho"));
+                tag.setPress(rs.getString("press"));
+                tag.setNum(rs.getInt("num"));
+                tag_Array.add(tag);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            DBUtil.CloseDB(rs, stm, conn);
+        }
+        return tag_Array;
     }
 }

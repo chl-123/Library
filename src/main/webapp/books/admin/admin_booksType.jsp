@@ -41,45 +41,7 @@
     }
 
 %>
-<div class="head">
-    <img class="img" src="${pageContext.request.contextPath}/books/img/title-yellow1.png"></img>
-    <div class="userName">
-        <a href="${pageContext.request.contextPath}/books/admin/index.jsp"><% out.write(admin.getName());%></a>
-    </div>
-    <div class="daohang">
-        <ul>
-            <li style="margin-left: 100px;">
-                <a href="${pageContext.request.contextPath}/books/admin/admin_books.jsp">图书管理</a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/books/admin/admin_booksType.jsp">图书分类管理</a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/books/admin/admin_borrows.jsp">图书借阅信息</a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/books/admin/admin_history.jsp">图书归还信息</a>
-            </li>
-
-            <li>
-                <a href="${pageContext.request.contextPath}/books/admin/admin_notice.jsp">公告管理</a>
-            </li>
-
-            <li>
-                <a href="${pageContext.request.contextPath}/books/admin/admin_users.jsp">读者管理</a>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="" role="button" data-hover="dropdown">我的</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#updateinfo" data-toggle="modal">个人资料</a></li>
-                    <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
-                    <li><a href="${pageContext.request.contextPath}/ExitServlet?id=<%=aid %>&&status=aid">退出</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-<div style="width: 100%;float: left;height: 310px;"></div>
+<%@include file="admin_head.jsp"%>
 <div class="body">
     <div class="content">
         <%@include file="../bulletin_board/admin_gongGao.jsp" %>
@@ -108,7 +70,7 @@
 
                                                 <button type="button" class="btn btn-primary" id="btn_add"
                                                         data-toggle="modal"
-                                                        data-target="#addModal">添加分类
+                                                        data-target="#addBookTypeModal">添加分类
                                                 </button>
                                             </div>
                                         </form>
@@ -149,7 +111,7 @@
 
                                     <td>
                                         <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
-                                                data-target="#updateModal"
+                                                data-target="#updateBookTypeModal"
                                                 id="btn_update"
                                                 onclick="showInfo2('<%= bean.getTid() %>','<%= bean.getName() %>')">
                                             修改
@@ -187,221 +149,8 @@
 </div>
 
 <div class="foot"><label class="lable">获取更多资源请关注公众号：C you again,版权申明：使用请注明原地址</label></div>
-
-
-<!-------------------------个人资料模糊框------------------------------------->
-
-<form class="form-horizontal" method="post" action="/manage_books/AdminServlet">   <!--保证样式水平不混乱-->
-    <!-- 模态框（Modal） -->
-    <div class="modal fade" id="updateinfo" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="ModalLabel">
-                        个人资料
-                    </h4>
-                </div>
-
-                <div class="modal-body">
-
-                    <!--正文-->
-                    <input type="hidden" name="tip" value="2">
-                    <input type="hidden" name="url" value="admin/admin_booksType">
-                    <div class="form-group">
-                        <label for="firstname" class="col-sm-3 control-label">真实姓名</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="请输入您的真实姓名"
-                                   value='<% out.write(admin.getName());%>'>
-                            <label class="control-label" for="name" style="display: none"></label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="firstname" class="col-sm-3 control-label">手机号</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入您的手机号"
-                                   value='<% out.write(admin.getPhone());%>'>
-                            <label class="control-label" for="phone" style="display: none"></label>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="firstname" class="col-sm-3 control-label">邮箱</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="请输入您的邮箱"
-                                   value='<% out.write(admin.getEmail());%>'>
-                            <label class="control-label" for="email" style="display: none"></label>
-                        </div>
-                    </div>
-
-                    <!--正文-->
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                    <button type="submit" class="btn btn-primary">
-                        修改
-                    </button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-    </div>
-
-</form>
-<!-------------------------------------------------------------->
-
-<!-------------------------------------------------------------->
-
-<form class="form-horizontal" method="post" action="/manage_books/AdminServlet">   <!--保证样式水平不混乱-->
-    <!-- 模态框（Modal） -->
-    <div class="modal fade" id="updatepwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        修改密码
-                    </h4>
-                </div>
-                <div class="modal-body">
-
-                    <!--正文-->
-                    <input type="hidden" name="tip" value="1">
-                    <input type="hidden" name="url" value="admin/admin_booksType">
-                    <div class="form-group">
-                        <label for="firstname" class="col-sm-3 control-label">原密码</label>
-                        <div class="col-sm-7">
-                            <input type="password" class="form-control" name="password" id="oldPwd"
-                                   placeholder="请输入原密码">
-                            <label class="control-label" for="oldPwd" style="display: none"></label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="firstname" class="col-sm-3 control-label">新密码</label>
-                        <div class="col-sm-7">
-                            <input type="password" class="form-control" name="password2" id="newPwd"
-                                   placeholder="请输入新密码">
-                            <label class="control-label" for="newPwd" style="display: none"></label>
-                        </div>
-                    </div>
-
-                    <!--正文-->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                    <button type="submit" class="btn btn-primary">
-                        修改
-                    </button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-    </div>
-
-</form>
-<!-------------------------------------------------------------->
-
-<!-- 修改模态框（Modal） -->
-<!-------------------------------------------------------------->
-
-<!-- 修改模态框（Modal） -->
-<form class="form-horizontal" method="post" action="/manage_books/updateBookTypeServlet">   <!--保证样式水平不混乱-->
-    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="updateModalLabel">
-                        修改图书分类
-                    </h4>
-                </div>
-                <div class="modal-body">
-
-                    <!---------------------表单-------------------->
-
-                    <div class="form-group">
-                        <label for="firstname" class="col-sm-3 control-label">图书名称</label>
-                        <div class="col-sm-7">
-                            <input type="hidden" name="tid" id="updatetid">
-                            <input type="text" class="form-control" id="updatename" name="name"
-                                   placeholder="请输入图书分类名称">
-                            <label class="control-label" for="updateBookName" style="display: none;"></label>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                    <button type="submit" class="btn btn-primary">
-                        修改
-                    </button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-    </div>
-
-</form>
-<!-------------------------------------------------------------->
-
-
-<!--------------------------------------添加的模糊框------------------------>
-<form class="form-horizontal" method="post" action="/manage_books/AddBookTypeServlet">   <!--保证样式水平不混乱-->
-    <!-- 模态框（Modal） -->
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        添加新图书分类
-                    </h4>
-                </div>
-                <div class="modal-body">
-
-                    <!---------------------表单-------------------->
-
-                    <div class="form-group">
-                        <label for="firstname" class="col-sm-3 control-label">分类名称</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control" id="addBookName" required="required" name="name"
-                                   placeholder="请输入图书分类名称">
-                            <label class="control-label" for="addBookName" style="display: none;"></label>
-                        </div>
-                    </div>
-
-                    <!---------------------表单-------------------->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                    <button type="submit" class="btn btn-primary">
-                        添加
-                    </button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-    </div>
-
-</form>
-<!--------------------------------------添加的模糊框------------------------>
-
+<%--模态框--%>
+<%@include file="admin_modal.jsp"%>
 
 </body>
 

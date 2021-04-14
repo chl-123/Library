@@ -144,7 +144,7 @@
                     function deleteNotice(nid) {
                         con = confirm("是否删除?");
                         if (con == true) {
-                            location.href = "/manage_books/deleteNoticeServlet?nid=" + nid;
+                            location.href = "/manage_books/books/admin/noticeServlet?action=removeNotice&nid=" + nid;
                         }
                     }
                 </script>

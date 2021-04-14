@@ -372,7 +372,7 @@ public class BookDao {
         Connection conn = DBUtil.getConnectDb();
         /*?='" + begin + "' ,? ='" + pageSize + "'"
         * */
-        String sql = "select * from book limit " + begin + "," + pageSize + "" ;
+        String sql = "select * from book order by bid limit " + begin + "," + pageSize + " " ;
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {

@@ -20,6 +20,7 @@ public class DisplayServlet extends BaseServlet{
         //2 调用BookService.page(pageNo，pageSize)：Page对象
         PageInfo<Book> pageInfo = service.getPage(pageNo,pageSize);
         request.setAttribute("pageInfo",pageInfo);
+
         //4 请求转发到pages/manager/book_manager.jsp页面
         request.getRequestDispatcher("/books/admin/admin_books.jsp").forward(request,response);
     }

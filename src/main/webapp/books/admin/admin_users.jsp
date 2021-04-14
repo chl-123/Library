@@ -157,7 +157,7 @@
                     function deletebook(aid) {
                         con = confirm("是否删除?");
                         if (con == true) {
-                            location.href = "/manage_books/deleteUserServlet?aid=" + aid;
+                            location.href = "/manage_books/books/admin/userServlet?action=removeUser&aid=" + aid;
                         }
                     }
                 </script>

@@ -161,7 +161,7 @@
                                                             data-target="#updateBooksModal"
                                                             id="btn_update"
                                                             onclick="showInfo2('${books.bid}','${books.card}','${books.type}','${books.name}'
-                                                                    ,'${books.autho}','${books.press}','${books.num}">
+                                                                    ,'${books.autho}','${books.press}','${books.num}')">
                                                         修改
                                                     </button>
                                                     <button type="button" class="btn btn-danger btn-xs"
@@ -201,7 +201,7 @@
                     function deletebook(bid) {
                         con = confirm("是否删除?");
                         if (con == true) {
-                            location.href = "/manage_books/deleteServlet?bid=" + bid;
+                            location.href = "/manage_books/books/admin/booksServlet?action=removeBooks&bid=" + bid;
                         }
                     }
                 </script>

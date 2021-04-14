@@ -136,7 +136,7 @@
                     function deletebook(tid) {
                         con = confirm("是否删除?");
                         if (con == true) {
-                            location.href = "/manage_books/deleteTypeServlet?tid=" + tid;
+                            location.href = "/manage_books/books/admin/bookTypeServlet?action=removeBookType&tid=" + tid;
                         }
                     }
                 </script>

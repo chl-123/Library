@@ -11,6 +11,7 @@
         <servlet-name>displayServlet</servlet-name>
         <url-pattern>/books/admin/displayServlet</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>booksServlet</servlet-name>
         <servlet-class>com.cya.controller.BooksServlet</servlet-class>
@@ -19,4 +20,33 @@
         <servlet-name>booksServlet</servlet-name>
         <url-pattern>/books/admin/booksServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>noticeServlet</servlet-name>
+        <servlet-class>com.cya.controller.NoticeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>noticeServlet</servlet-name>
+        <url-pattern>/books/admin/noticeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>userServlet</servlet-name>
+        <servlet-class>com.cya.controller.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userServlet</servlet-name>
+        <url-pattern>/books/admin/userServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>bookTypeServlet</servlet-name>
+        <servlet-class>com.cya.controller.BookTypeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bookTypeServlet</servlet-name>
+        <url-pattern>/books/admin/bookTypeServlet</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

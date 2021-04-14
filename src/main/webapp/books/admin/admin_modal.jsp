@@ -24,6 +24,7 @@
                     </h4>
                 </div>
 
+
                 <div class="modal-body">
 
                     <!--正文-->
@@ -133,7 +134,7 @@
 <!-------------------------修改图书------------------------------------->
 
 <!-- 修改图书模态框（Modal） -->
-<form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/updateBookServlet">
+<form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/books/admin/booksServlet?action=updateBooks">
     <!--保证样式水平不混乱-->
     <div class="modal fade" id="updateBooksModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
          aria-hidden="true">
@@ -155,7 +156,7 @@
                         <label for="firstname" class="col-sm-3 control-label">图书号</label>
                         <div class="col-sm-7">
                             <input type="hidden" id="updateBookId" name="updatebid">
-                            <input type="text" class="form-control" id="updateISBN" name="card" placeholder="请输入书号">
+                            <input type="text" class="form-control" id="updateISBN" name="card" placeholder="请输入书号" value="${books.card}">
                             <label class="control-label" for="updateISBN" style="display: none;"></label>
                         </div>
                     </div>
@@ -338,7 +339,7 @@
 
 
 <!-- ————————————————————修改图书分类的模态框（Modal） -->
-<form class="form-horizontal" method="post" action="/manage_books/updateBookTypeServlet">   <!--保证样式水平不混乱-->
+<form class="form-horizontal" method="post" action="/manage_books/books/admin/bookTypeServlet?action=updateBookType">   <!--保证样式水平不混乱-->
     <div class="modal fade" id="updateBookTypeModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -382,7 +383,7 @@
 
 
 <!--------------------------------------添加图书分类的模糊框------------------------>
-<form class="form-horizontal" method="post" action="/manage_books/AddBookTypeServlet">   <!--保证样式水平不混乱-->
+<form class="form-horizontal" method="post" action="/manage_books/books/admin/bookTypeServlet?action=addBookType">   <!--保证样式水平不混乱-->
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="addBookTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
@@ -430,7 +431,7 @@
 
 
 <!-- 修改公告模态框（Modal） -->
-<form class="form-horizontal" method="post" action="/manage_books/updateNoticeServlet">   <!--保证样式水平不混乱-->
+<form class="form-horizontal" method="post" action="/manage_books/books/admin/noticeServlet?action=updateNotice">   <!--保证样式水平不混乱-->
     <div class="modal fade" id="updateNoticeModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -474,7 +475,7 @@
 
 
 <!--------------------------------------添加公告的模糊框------------------------>
-<form class="form-horizontal" method="post" action="/manage_books/AddNoticeServlet">   <!--保证样式水平不混乱-->
+<form class="form-horizontal" method="post" action="/manage_books/books/admin/noticeServlet?action=addNotice">   <!--保证样式水平不混乱-->
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="addNoticeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
@@ -529,7 +530,7 @@
 
 
 <!-- 修改读者模态框（Modal） -->
-<form class="form-horizontal" method="post" action="/manage_books/updateUserServlet">   <!--保证样式水平不混乱-->
+<form class="form-horizontal" method="post" action="/manage_books/books/admin/userServlet?action=updateUser">   <!--保证样式水平不混乱-->
     <div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -622,7 +623,7 @@
 
 
 <!--------------------------------------添加的模糊框------------------------>
-<form class="form-horizontal" method="post" action="/manage_books/AddUserServlet">   <!--保证样式水平不混乱-->
+<form class="form-horizontal" method="post" action="/manage_books/books/admin/userServlet?action=addUser">   <!--保证样式水平不混乱-->
     <!-- 添加读者模态框（Modal） -->
     <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">

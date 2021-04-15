@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
                                         <form class="form-horizontal"
-                                              action="${pageContext.request.contextPath}/selectServlet" method="post">
+                                              action="${pageContext.request.contextPath}/books/admin/displayServlet?action=showInfo" method="post">
 
                                             <div class="col-lg-3 form-group">
 

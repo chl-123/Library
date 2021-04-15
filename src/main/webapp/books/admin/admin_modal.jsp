@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-------------------------个人资料模糊框------------------------------------->
 
-<form class="form-horizontal" method="post" action="/manage_books/AdminServlet">   <!--保证样式水平不混乱-->
+<form class="form-horizontal" method="post" action="/manage_books/books/admin/adminServlet?action=adminManage">   <!--保证样式水平不混乱-->
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="updateinfo" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -29,7 +29,7 @@
 
                     <!--正文-->
                     <input type="hidden" name="tip" value="2">
-                    <input type="hidden" name="url" value="admin/admin_books">
+                    <input type="hidden" name="url" value="${pageContext.request.requestURL}">
                     <div class="form-group">
                         <label for="firstname" class="col-sm-3 control-label">真实姓名</label>
                         <div class="col-sm-7">
@@ -78,7 +78,7 @@
 
 <!-------------------------修改密码------------------------------------->
 
-<form class="form-horizontal" method="post" action="/manage_books/AdminServlet">   <!--保证样式水平不混乱-->
+<form class="form-horizontal" method="post" action="/manage_books/books/admin/adminServlet?action=adminManage">   <!--保证样式水平不混乱-->
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="updatepwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
@@ -96,9 +96,10 @@
 
                     <!--正文-->
                     <input type="hidden" name="tip" value="1">
-                    <input type="hidden" name="url" value="admin/admin_books">
+                    <input type="hidden" name="url" value="${pageContext.request.requestURL}">
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-3 control-label">原密码</label>
+                        <label for="firstname" class="col-sm-3 control-labe
+                        l">原密码</label>
                         <div class="col-sm-7">
                             <input type="password" class="form-control" name="password" id="oldPwd"
                                    placeholder="请输入原密码">

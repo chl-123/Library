@@ -38,7 +38,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="#updateinfo" data-toggle="modal">个人资料</a></li>
                     <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
-                    <li><a href="${pageContext.request.contextPath}/ExitServlet?id=<%=aid %>&&status=aid">退出</a></li>
+                    <li><a href="${pageContext.request.contextPath}/books/admin/login_register_loginOutServlet?action=doLoginOut&id=<%=aid %>&&status=aid">退出</a></li>
                 </ul>
             </li>
         </ul>

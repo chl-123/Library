@@ -48,5 +48,31 @@
         <url-pattern>/books/admin/bookTypeServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>login_register_loginOutServlet</servlet-name>
+        <servlet-class>com.cya.controller.Login_Register_LoginOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>login_register_loginOutServlet</servlet-name>
+        <url-pattern>/books/admin/login_register_loginOutServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>borrowServlet</servlet-name>
+        <servlet-class>com.cya.controller.borrowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>borrowServlet</servlet-name>
+        <url-pattern>/books/admin/borrowServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>adminServlet</servlet-name>
+        <servlet-class>com.cya.controller.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminServlet</servlet-name>
+        <url-pattern>/books/admin/adminServlet</url-pattern>
+    </servlet-mapping>
 
 </web-app>

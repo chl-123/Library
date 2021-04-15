@@ -4,43 +4,15 @@ import com.cya.dao.AdminDao;
 import com.cya.pojo.Admin;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * Servlet implementation class LoginServlet
- */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-    }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-//		doGet(request, response);
+public class Login_Register_LoginOutServlet extends BaseServlet{
+    private String url="";
+    public void doLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //登录的判断
         PrintWriter out = response.getWriter();
         request.setCharacterEncoding("UTF-8");
@@ -59,14 +31,14 @@ public class LoginServlet extends HttpServlet {
             //更加账号和密码查找出读者的信息
             adminbean = admindao.getAdminInfo(username, password);
             if(adminbean.getStatus()==1) {
-            	//将uid存入session中
+                //将uid存入session中
                 session.setAttribute("uid", "" + adminbean.getAid());
             }
             else {
-            	//将aid存入session中
+                //将aid存入session中
                 session.setAttribute("aid", "" + adminbean.getAid());
-			}
-            
+            }
+
             //设置session的失效时间
             session.setMaxInactiveInterval(6000);
             //根据status的值来判断是管理员，还是读者，status=1为读者
@@ -81,5 +53,36 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/manage_books/books/login.jsp");
         }
     }
-
+    public void doRegister(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        //获取注册信息
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        int lend_num = 30;
+        int max_num = 5;
+        AdminDao userdao = new AdminDao();
+        //将注册信息存入数据库，再返回登录
+        userdao.Register(username, password, name, email, phone, lend_num, max_num);
+        response.sendRedirect("/manage_books/books/login.jsp");
+    }
+    public void doLoginOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id=request.getParameter("id");
+        String status=request.getParameter("status");
+        HttpSession session=request.getSession();
+        if(status.equals("uid")) {
+            //用户退出
+            session.removeAttribute("uid");
+            url="./index.jsp";
+        }
+        else {
+            //管理员退出
+            session.removeAttribute("aid");
+            url="./index.jsp";
+        }
+        response.sendRedirect(url);
+    }
 }

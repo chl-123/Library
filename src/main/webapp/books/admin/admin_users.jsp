@@ -60,7 +60,7 @@
                                         <div class="text-muted bootstrap-admin-box-title">读者管理</div>
                                     </div>
                                     <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
-                                        <form class="form-horizontal" action="/manage-books-ofSystem/selectServlet"
+                                        <form class="form-horizontal" action="/manage_books/books/admin/displayServlet?action=showInfo"
                                               method="post">
 
                                             <div class="col-lg-3 form-group">

@@ -5,8 +5,6 @@ import com.cya.dao.BookDao;
 import com.cya.pojo.Admin;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,31 +15,12 @@ import java.io.PrintWriter;
 /**
  * Servlet implementation class AdminServlet
  */
-@WebServlet("/AdminServlet")
-public class AdminServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+
+public class AdminServlet extends BaseServlet {
+
 
     private String id="";
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AdminServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-    }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void adminManage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
 //		doGet(request, response);
         PrintWriter out = response.getWriter();
@@ -54,9 +33,10 @@ public class AdminServlet extends HttpServlet {
         //获取发起请求页面的文件名称，这个在对应的jsp里面的表单填写，修改完成后就可以直接返回对应的页面
         String url = request.getParameter("url");
         System.out.println("url="+url);
+        System.out.println(url.split("/")[4]);
         HttpSession session = request.getSession();
         Admin adminbean = new Admin();
-        if(url.split("/")[0].equals("user")) {
+        if(url.split("/")[5].equals("user")) {
         	id=(String) session.getAttribute("uid");
         }
         else {
@@ -77,9 +57,10 @@ public class AdminServlet extends HttpServlet {
             if (old_password.equals(password)) {
                 admindao.updateUser(adminbean.getAid(), adminbean.getUsername(), password2, adminbean.getName(),
                         adminbean.getEmail(), adminbean.getPhone(), adminbean.getLend_num(), adminbean.getMax_num());
-                response.sendRedirect("/manage_books/books/" + url + ".jsp");
+                response.sendRedirect( url );
             } else {
-                out.write("<script type='text/javascript'>location.href='./books/" + url + ".jsp';alert('password error'); </script>");
+                out.write("<script type='text/javascript'>location.href=" + url + ";alert('password error'); </script>");
+                response.sendRedirect( url );
 
             }
         } else {
@@ -92,7 +73,7 @@ public class AdminServlet extends HttpServlet {
             admindao.updateUser(adminbean.getAid(), adminbean.getUsername(), adminbean.getPassword(), name,
                     email, phone, adminbean.getLend_num(), adminbean.getMax_num());
             
-            response.sendRedirect("/manage_books/books/" + url + ".jsp");
+            response.sendRedirect(url );
         }
     }
 

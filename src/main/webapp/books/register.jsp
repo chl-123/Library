@@ -32,7 +32,7 @@
               </span>
 
 
-            <form class="am-form tpl-form-line-form" method="post" action="/books/RegisterServlet">
+            <form class="am-form tpl-form-line-form" method="post" action="/manage_books/books/admin/login_register_loginOutServlet?action=doRegister">
                 <div class="am-form-group">
                     <input type="text" class="tpl-form-input" id="user-name" name="username" required="required"
                            placeholder="请输入账号">

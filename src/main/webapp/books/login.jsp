@@ -43,7 +43,7 @@
             <div class="title">欢 迎 登 录 图 书 管 理 系 统!</div>
 
             <form class="bootstrap-admin-login-form" method="post"
-                  action="${pageContext.request.contextPath}/LoginServlet">
+                  action="${pageContext.request.contextPath}/books/admin/login_register_loginOutServlet?action=doLogin">
                 <%
                     String state = (String) session.getAttribute("state");
                     session.removeAttribute("state");
